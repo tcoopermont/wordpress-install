@@ -1,5 +1,5 @@
 os: linux
-dist: trusty
+dist: bionic 
 language: minimal 
 sudo: true 
 install: ./setup-wp.sh
