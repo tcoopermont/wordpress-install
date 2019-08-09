@@ -3,4 +3,4 @@ dist: bionic
 language: minimal 
 sudo: true 
 install: ./setup-wp.sh
-build: curl localhost | grep testing
+script: curl example.com | grep testing
