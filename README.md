@@ -2,8 +2,9 @@
 # wordpress-install
 install wordpress on fresh version of ubuntu 18.04.3
 
-- webserver nginx 
+- webserver nginx 1.14 
 
-- database mariadb
+- database mysql 5.7.27  
 
-- php 
+- php-fpm 7.2 
+
