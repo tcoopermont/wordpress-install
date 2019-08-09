@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash -x
+
+##!/usr/bin/env bash
 
 #installs wordpress and dependencies 
 #Author: tomcooper@tec8.net
