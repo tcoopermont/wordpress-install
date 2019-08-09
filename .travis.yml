@@ -2,4 +2,4 @@ os: linux
 dist: trusty
 language: minimal 
 sudo: true 
-install: setup-wp.sh
+install: ./setup-wp.sh
