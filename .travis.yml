@@ -3,3 +3,4 @@ dist: bionic
 language: minimal 
 sudo: true 
 install: ./setup-wp.sh
+build: wget localhost
