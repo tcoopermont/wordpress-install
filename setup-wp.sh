@@ -7,6 +7,7 @@
 #Date: 2019-08-09
 #todo: check for ufw firewall
 
+pre_packages="unzip"
 mysql_package="mysql-server"
 web_package="nginx"
 web_modules="mod_rewrite" #looks like this is installed in main package
@@ -24,6 +25,7 @@ wp_db_pw="!apw4wpex%"
 sudo apt-get update
 #check for error
 
+sudo apt-get -y install $pre_packages
  
 #get the new or existing root db pw
 echo "get root db password" #how to auto this in 
@@ -32,7 +34,7 @@ dpkg_result=$(dpkg-query --show $mysql_package)
 if [ $? -ne 0 ]
 then
   echo "installing $mysql_package"
-  sudo apt-get install $mysql_package
+  sudo apt-get -y install $mysql_package
   echo "setup $mysql_package" 
   #sudo mysql_secure_installation
 else
@@ -43,7 +45,7 @@ dpkg_result=$(dpkg-query --show $web_package)
 if [ $? -ne 0 ]
 then
   echo "installing $web_package"
-  sudo apt-get install $web_package
+  sudo apt-get -y install $web_package
 else
   echo "nginx version $dpkg_result already installed" #need to cut
 fi
@@ -52,8 +54,8 @@ dpkg_result=$(dpkg-query --show $php_package)
 if [ $? -ne 0 ]
 then
   echo "installing $php_package"
-  sudo apt-get install $php_package
-  sudo apt-get install $php_modules
+  sudo apt-get -y install $php_package
+  sudo apt-get -y install $php_modules
 else
   echo "php version $dpkg_result already installed" #need to cut
 fi

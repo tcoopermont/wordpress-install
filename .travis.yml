@@ -4,8 +4,6 @@ language: minimal
 sudo: true 
 install: 
  - ./setup-wp.sh
- - sleep 5
-#script: curl example.com | grep testing
+ - sleep 1
 script: 
- - curl example.com 
- - sudo cat /var/log/nginx/error.log 
+ - curl -L example.com | grep -i "wordpress.*installation"
