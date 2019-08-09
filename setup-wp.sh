@@ -79,6 +79,7 @@ sudo cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
 sudo sed -i "s/database-name-here/$wp_db_name/" /var/www/wordpress/wp-config.php
 sudo sed -i "s/username-here/$wp_db_user/" /var/www/wordpress/wp-config.php
 sudo sed -i "s/password-here/$wp_db_pw/" /var/www/wordpress/wp-config.php
+grep DB /var/www/wordpress/wp-config.php
 sudo chown -R www-data:www-data /var/www/wordpress
 
 
