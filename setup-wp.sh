@@ -11,7 +11,8 @@ web_modules="mod_rewrite" #looks like this is installed in main package
 php_package="php-fpm"
 php_modules="php-mysql php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip"
 
-mysql_root_pw="default"
+#using integrated os login
+#mysql_root_pw="default"
 
 wp_db_name="examplecom_db"
 wp_db_user="examplecom_user"
@@ -53,23 +54,33 @@ then
 else
   echo "php version $dpkg_result already installed" #need to cut
 fi
-exit
 
 #create wordpress user,db and grants
-echo "create user '$wp_db_user'@'localhost' identified by $wp_db_pw;" | mysql -u root -p${mysql_root_ps} &&
-echo "create database $wp_db_name;" | mysql -u root -p${mysql_root_ps} &&
+echo "create user '$wp_db_user'@'localhost' identified by '$wp_db_pw';" | sudo mysql -u root &&
+echo "create database $wp_db_name;" | sudo mysql -u root  &&
 echo "grant all privileges on $wp_db_name.* to '$wp_db_user'@'localhost';FLUSH PRIVILEGES;" \
-      | mysql -u root -p${mysql_root_ps}
+      | sudo mysql -u root 
 if [ $? -ne 0 ]
 then
   echo "error in mysql tasks"
   exit
 fi
 
+#add hosts entry
+echo "127.0.0.1 example.com" | sudo tee -a /etc/hosts
+sudo mkdir /var/www/wordpress
+sudo cp index.html /var/www/wordpress/index.html
+
+sudo cp example.com.conf /etc/nginx/sites-available/example.com
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
-sudo unlink /etc/nginx/sites-enabled/default
+#sudo unlink /etc/nginx/sites-enabled/default
 
 
 sudo nginx -t
 
 sudo systemctl reload nginx
+
+
+#install wordpress
+
+sudo chown -R www-data:www-data /var/www/wordpress
