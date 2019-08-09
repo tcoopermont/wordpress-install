@@ -4,7 +4,7 @@ language: minimal
 sudo: true 
 install: 
  - ./setup-wp.sh
- - sleep 1
+ - sleep 5
 #script: curl example.com | grep testing
 script: 
  - curl example.com 
