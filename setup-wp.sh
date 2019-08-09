@@ -73,7 +73,7 @@ sudo cp index.html /var/www/wordpress/index.html
 
 sudo cp example.com.conf /etc/nginx/sites-available/example.com
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
-#sudo unlink /etc/nginx/sites-enabled/default
+sudo unlink /etc/nginx/sites-enabled/default
 
 
 sudo nginx -t
