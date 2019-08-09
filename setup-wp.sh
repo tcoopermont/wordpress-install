@@ -92,3 +92,5 @@ sudo nginx -t
 
 sudo systemctl reload nginx
 
+rm latest.zip 
+
