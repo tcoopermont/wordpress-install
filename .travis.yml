@@ -2,6 +2,8 @@ os: linux
 dist: bionic 
 language: minimal 
 sudo: true 
-install: ./setup-wp.sh
+install: 
+ - ./setup-wp.sh
+ - sleep 5
 #script: curl example.com | grep testing
 script: curl example.com 
