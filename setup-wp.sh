@@ -70,11 +70,11 @@ fi
 
 #add hosts entry
 echo "127.0.0.1 example.com" | sudo tee -a /etc/hosts
-sudo mkdir /var/www/wordpress
 #install wordpress
 #sudo cp index.html /var/www/wordpress/index.html
 wget http://wordpress.org/latest.zip
-sudo unzip latest.zip -d /var/www/wordpress/
+sudo unzip latest.zip -d /var/www/
+cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
 sudo chown -R www-data:www-data /var/www/wordpress
 
 
