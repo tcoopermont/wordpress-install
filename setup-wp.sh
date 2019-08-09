@@ -71,7 +71,12 @@ fi
 #add hosts entry
 echo "127.0.0.1 example.com" | sudo tee -a /etc/hosts
 sudo mkdir /var/www/wordpress
-sudo cp index.html /var/www/wordpress/index.html
+#install wordpress
+#sudo cp index.html /var/www/wordpress/index.html
+wget http://wordpress.org/latest.zip
+sudo unzip latest.zip -d /var/www/wordpress/
+sudo chown -R www-data:www-data /var/www/wordpress
+
 
 sudo cp example.com.conf /etc/nginx/sites-available/example.com
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
@@ -82,7 +87,3 @@ sudo nginx -t
 
 sudo systemctl reload nginx
 
-
-#install wordpress
-
-sudo chown -R www-data:www-data /var/www/wordpress
